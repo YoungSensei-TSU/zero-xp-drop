@@ -81,8 +81,8 @@ import net.runelite.client.ui.overlay.OverlayManager;
 @Slf4j
 @PluginDescriptor(
 	name = "Sensei 0 XP Drop",
-	description = "Shows a +0 XP drop when you attack and miss, to keep xp-drop timing in sync (Bandos door flinch, etc.)",
-	tags = {"xp", "drop", "miss", "zero", "tick", "timing", "bandos", "flinch", "range", "sensei"}
+	description = "Shows a +0 XP drop when your attack misses, so every attack gets a drop. Keeps xp-drop timing in sync for flinching (Bandos door, etc.)",
+	tags = {"xp", "drop", "xpdrop", "experience", "miss", "missed", "zero", "0", "tick", "timing", "flinch", "flinching", "bandos", "graardor", "gwd", "godwars", "safespot", "ranged", "range", "melee", "combat", "pvm"}
 )
 public class SenseiZeroXpDropPlugin extends Plugin
 {

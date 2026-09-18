@@ -77,7 +77,7 @@ public interface SenseiZeroXpDropConfig extends Config
 
 	@ConfigSection(
 		name = "Native drop",
-		description = "The default drop, rendered by the game itself.",
+		description = "Choose the render mode, and set up the drop the game itself renders.",
 		position = 0
 	)
 	String nativeSection = "native";
@@ -101,7 +101,7 @@ public interface SenseiZeroXpDropConfig extends Config
 	@ConfigItem(
 		keyName = "renderMode",
 		name = "Render mode",
-		description = "Native: the game's own xp drop (default). Overlay: custom drawing that can show a literal +0.",
+		description = "Overlay: custom drawing that shows a literal +0 (default). Native: the game's own xp drop, which can't show 0.",
 		position = 0,
 		section = nativeSection
 	)
@@ -163,7 +163,7 @@ public interface SenseiZeroXpDropConfig extends Config
 	@ConfigItem(
 		keyName = "dropDurationMs",
 		name = "Drop duration (ms)",
-		description = "Overlay mode. How long the drop stays on screen before fading out.",
+		description = "Overlay mode. How long the drop stays on screen.",
 		position = 2,
 		section = overlaySection
 	)
@@ -225,7 +225,7 @@ public interface SenseiZeroXpDropConfig extends Config
 	@ConfigItem(
 		keyName = "showSkillIcon",
 		name = "Show skill icon",
-		description = "Overlay mode. Draw your current attack style's skill icon next to the drop, like native xp drops. Uses the last combat skill you gained XP in.",
+		description = "Overlay mode. Draw your current attack style's skill icon next to the drop, like native xp drops.",
 		position = 7,
 		section = overlaySection
 	)
@@ -316,6 +316,6 @@ public interface SenseiZeroXpDropConfig extends Config
 	)
 	default boolean logToConsole()
 	{
-		return true;
+		return false;
 	}
 }

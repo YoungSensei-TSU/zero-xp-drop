@@ -80,11 +80,11 @@ import net.runelite.client.ui.overlay.OverlayManager;
  */
 @Slf4j
 @PluginDescriptor(
-	name = "Sensei 0 XP Drop",
+	name = "0 XP Drop",
 	description = "Shows a +0 XP drop when your attack misses, so every attack gets a drop. Keeps xp-drop timing in sync for flinching (Bandos door, etc.)",
 	tags = {"xp", "drop", "xpdrop", "experience", "miss", "missed", "zero", "0", "tick", "timing", "flinch", "flinching", "bandos", "graardor", "gwd", "godwars", "safespot", "ranged", "range", "melee", "combat", "pvm"}
 )
-public class SenseiZeroXpDropPlugin extends Plugin
+public class ZeroXpDropPlugin extends Plugin
 {
 	private static final Skill[] COMBAT_SKILLS = {
 		Skill.ATTACK, Skill.STRENGTH, Skill.DEFENCE, Skill.RANGED, Skill.MAGIC, Skill.HITPOINTS
@@ -94,13 +94,13 @@ public class SenseiZeroXpDropPlugin extends Plugin
 	private Client client;
 
 	@Inject
-	private SenseiZeroXpDropConfig config;
+	private ZeroXpDropConfig config;
 
 	@Inject
 	private OverlayManager overlayManager;
 
 	@Inject
-	private SenseiZeroXpDropOverlay overlay;
+	private ZeroXpDropOverlay overlay;
 
 	// Tracks projectiles we've already counted so each one only registers as one attack.
 	// Weak keys let the client GC despawned projectiles for us.
@@ -130,9 +130,9 @@ public class SenseiZeroXpDropPlugin extends Plugin
 	private WorldPoint prevPlayerLocation = null;
 
 	@Provides
-	SenseiZeroXpDropConfig provideConfig(ConfigManager configManager)
+	ZeroXpDropConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(SenseiZeroXpDropConfig.class);
+		return configManager.getConfig(ZeroXpDropConfig.class);
 	}
 
 	@Override
@@ -196,7 +196,7 @@ public class SenseiZeroXpDropPlugin extends Plugin
 
 		if (config.logToConsole())
 		{
-			log.info("[Sensei0] t={} ANIM {}", animationAttackTick, anim);
+			log.info("[0XpDrop] t={} ANIM {}", animationAttackTick, anim);
 		}
 	}
 
@@ -224,7 +224,7 @@ public class SenseiZeroXpDropPlugin extends Plugin
 
 			if (config.logToConsole())
 			{
-				log.info("[Sensei0] t={} XP +{} {}", combatXpTick, xp - prev, skill);
+				log.info("[0XpDrop] t={} XP +{} {}", combatXpTick, xp - prev, skill);
 			}
 		}
 	}
@@ -245,7 +245,7 @@ public class SenseiZeroXpDropPlugin extends Plugin
 			return;
 		}
 
-		log.info("[Sensei0] t={} HITSPLAT mine amount={} type={} on {}",
+		log.info("[0XpDrop] t={} HITSPLAT mine amount={} type={} on {}",
 			client.getTickCount(), h.getAmount(), h.getHitsplatType(),
 			e.getActor() == null ? "?" : e.getActor().getName());
 	}
@@ -289,7 +289,7 @@ public class SenseiZeroXpDropPlugin extends Plugin
 		{
 			if (config.logToConsole())
 			{
-				log.info("[Sensei0] t={} ANIM {} ignored (block/defend animation)", tick, animationAttackId);
+				log.info("[0XpDrop] t={} ANIM {} ignored (block/defend animation)", tick, animationAttackId);
 			}
 			return;
 		}
@@ -302,7 +302,7 @@ public class SenseiZeroXpDropPlugin extends Plugin
 		{
 			if (config.logToConsole())
 			{
-				log.info("[Sensei0] t={} ANIM {} ignored (user-ignored animation)", tick, animationAttackId);
+				log.info("[0XpDrop] t={} ANIM {} ignored (user-ignored animation)", tick, animationAttackId);
 			}
 			return;
 		}
@@ -372,7 +372,7 @@ public class SenseiZeroXpDropPlugin extends Plugin
 
 			if (config.logToConsole())
 			{
-				log.info("[Sensei0] t={} PROJECTILE id={} mine={} (byActor={} byPoint={} aimedAtUs={}) start={} cycle={} src={} me={}",
+				log.info("[0XpDrop] t={} PROJECTILE id={} mine={} (byActor={} byPoint={} aimedAtUs={}) start={} cycle={} src={} me={}",
 					tick, p.getId(), mine, byActor, byPoint, aimedAtUs, p.getStartCycle(), gameCycle, sp, myLoc);
 			}
 
@@ -398,7 +398,7 @@ public class SenseiZeroXpDropPlugin extends Plugin
 
 		if (config.logToConsole())
 		{
-			log.info("[Sensei0] t={} EVAL attacked=true gainedXp={} -> {}",
+			log.info("[0XpDrop] t={} EVAL attacked=true gainedXp={} -> {}",
 				tick, gainedCombatXp, gainedCombatXp ? "hit (real drop)" : "MISS (fake drop)");
 		}
 
@@ -423,7 +423,7 @@ public class SenseiZeroXpDropPlugin extends Plugin
 
 	private void showFakeDrop()
 	{
-		if (config.renderMode() == SenseiZeroXpDropConfig.RenderMode.OVERLAY)
+		if (config.renderMode() == ZeroXpDropConfig.RenderMode.OVERLAY)
 		{
 			// Custom drawing - can show a literal +0. Read the current attack style
 			// live (from the weapon + attack-style varbits) so the icon is correct the

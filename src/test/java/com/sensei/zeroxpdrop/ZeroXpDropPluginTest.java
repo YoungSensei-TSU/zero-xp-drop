@@ -3,11 +3,11 @@ package com.sensei.zeroxpdrop;
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
 
-public class SenseiZeroXpDropPluginTest
+public class ZeroXpDropPluginTest
 {
 	public static void main(String[] args) throws Exception
 	{
-		ExternalPluginManager.loadBuiltin(SenseiZeroXpDropPlugin.class);
+		ExternalPluginManager.loadBuiltin(ZeroXpDropPlugin.class);
 		RuneLite.main(args);
 	}
 }

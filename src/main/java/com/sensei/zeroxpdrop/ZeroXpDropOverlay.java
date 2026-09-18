@@ -53,11 +53,11 @@ import net.runelite.client.util.ImageUtil;
  * a slot whose total is 0 - so we paint our own, anchored to the real xp-drop
  * widget so it lands in the same place as your genuine drops.
  */
-class SenseiZeroXpDropOverlay extends Overlay
+class ZeroXpDropOverlay extends Overlay
 {
 	private final Client client;
-	private final SenseiZeroXpDropPlugin plugin;
-	private final SenseiZeroXpDropConfig config;
+	private final ZeroXpDropPlugin plugin;
+	private final ZeroXpDropConfig config;
 	private final SpriteManager spriteManager;
 
 	// Lazily-loaded, cached skill icons.
@@ -70,7 +70,7 @@ class SenseiZeroXpDropOverlay extends Overlay
 	private int anchorY = -1;
 
 	@Inject
-	private SenseiZeroXpDropOverlay(Client client, SenseiZeroXpDropPlugin plugin, SenseiZeroXpDropConfig config,
+	private ZeroXpDropOverlay(Client client, ZeroXpDropPlugin plugin, ZeroXpDropConfig config,
 		SpriteManager spriteManager)
 	{
 		this.client = client;
@@ -85,7 +85,7 @@ class SenseiZeroXpDropOverlay extends Overlay
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
-		final List<SenseiZeroXpDropPlugin.FakeDrop> drops = plugin.getFakeDrops();
+		final List<ZeroXpDropPlugin.FakeDrop> drops = plugin.getFakeDrops();
 		if (drops.isEmpty())
 		{
 			return null;
@@ -126,9 +126,9 @@ class SenseiZeroXpDropOverlay extends Overlay
 		graphics.setFont(graphics.getFont().deriveFont((float) Math.max(1, config.dropTextSize())));
 		final FontMetrics fm = graphics.getFontMetrics();
 
-		for (Iterator<SenseiZeroXpDropPlugin.FakeDrop> it = drops.iterator(); it.hasNext(); )
+		for (Iterator<ZeroXpDropPlugin.FakeDrop> it = drops.iterator(); it.hasNext(); )
 		{
-			final SenseiZeroXpDropPlugin.FakeDrop drop = it.next();
+			final ZeroXpDropPlugin.FakeDrop drop = it.next();
 			final long elapsed = now - drop.getSpawnMillis();
 			if (elapsed >= durationMs)
 			{
@@ -212,7 +212,7 @@ class SenseiZeroXpDropOverlay extends Overlay
 		}
 	}
 
-	private static void ageOut(List<SenseiZeroXpDropPlugin.FakeDrop> drops)
+	private static void ageOut(List<ZeroXpDropPlugin.FakeDrop> drops)
 	{
 		final long now = System.currentTimeMillis();
 		drops.removeIf(d -> now - d.getSpawnMillis() >= 5000);

@@ -1,4 +1,4 @@
-# Sensei 0 XP Drop
+# 0 XP Drop
 
 Shows a **+0 XP drop whenever your attack misses**, so every attack you make produces an XP drop - hit or miss.
 
@@ -35,7 +35,7 @@ so your drops keep a steady rhythm that matches your attack speed, no matter how
 
 ## Setup
 
-1. Install **Sensei 0 XP Drop** from the Plugin Hub.
+1. Install **0 XP Drop** from the Plugin Hub.
 2. Make sure in-game **XP drops are turned on** (the XP button next to the minimap). The `+0` appears next to
    them.
 3. Attack something - misses now show a `+0`.

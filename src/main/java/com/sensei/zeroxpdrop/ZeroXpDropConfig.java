@@ -33,10 +33,10 @@ import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
 import net.runelite.client.config.Range;
 
-@ConfigGroup(SenseiZeroXpDropConfig.GROUP)
-public interface SenseiZeroXpDropConfig extends Config
+@ConfigGroup(ZeroXpDropConfig.GROUP)
+public interface ZeroXpDropConfig extends Config
 {
-	String GROUP = "senseizeroxpdrop";
+	String GROUP = "zeroxpdrop";
 
 	enum RenderMode
 	{
